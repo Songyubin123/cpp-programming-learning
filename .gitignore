@@ -3,6 +3,8 @@
 *.out
 *.o
 *.obj
+*.ilk
+*.pdb
 *.dll
 *.so
 *.a
@@ -20,4 +22,3 @@ cmake-build-*/
 # Operating system files
 .DS_Store
 Thumbs.db
-
