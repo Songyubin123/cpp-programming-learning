@@ -17,6 +17,8 @@ cmake-build-*/
 .vs/
 .vscode/*
 !.vscode/tasks.json
+!.vscode/build-active.ps1
+!.vscode/launch.json
 .idea/
 *.user
 

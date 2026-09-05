@@ -1,46 +1,12 @@
 {
-    "tasks": [
-        {
-            "type": "shell",
-            "label": "创建 build 目录",
-            "command": "powershell.exe",
-            "args": [
-                "-NoProfile",
-                "-Command",
-                "New-Item -ItemType Directory -Force -Path '${workspaceFolder}\\build' | Out-Null"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "type": "cppbuild",
-            "label": "C/C++: cl.exe 生成活动文件",
-            "command": "cl.exe",
-            "args": [
-                "/Zi",
-                "/EHsc",
-                "/nologo",
-                "/utf-8",
-                "/Fo${workspaceFolder}\\build\\",
-                "/Fd${workspaceFolder}\\build\\${fileBasenameNoExtension}.pdb",
-                "/Fe${workspaceFolder}\\build\\${fileBasenameNoExtension}.exe",
-                "${file}",
-                "/link",
-                "/INCREMENTAL:NO",
-                "/PDB:${workspaceFolder}\\build\\${fileBasenameNoExtension}.pdb"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": [
-                "$msCompile"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "dependsOn": "创建 build 目录",
-            "detail": "将活动 C++ 文件的所有编译输出统一保存到 build 目录。"
-        }
-    ],
-    "version": "2.0.0"
+  "version": "2.0.0",
+  "tasks": [{
+    "type": "process",
+    "label": "C/C++: cl.exe 生成活动文件",
+    "command": "${env:WINDIR}\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}\\.vscode\\build-active.ps1", "-SourceFile", "${file}", "-Workspace", "${workspaceFolder}"],
+    "options": {"cwd": "${workspaceFolder}"},
+    "problemMatcher": ["$msCompile"],
+    "group": {"kind": "build", "isDefault": true}
+  }]
 }
