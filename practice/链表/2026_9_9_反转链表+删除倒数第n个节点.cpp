@@ -44,10 +44,10 @@ public:
 
     //删除倒数第n个节点
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        ListNode* dummy = new ListNode(-1);
-        dummy->next = head;
-        ListNode* fast = dummy;
-        ListNode* slow = dummy;
+        ListNode dummy(-1);
+        dummy.next = head;
+        ListNode* fast = &dummy;
+        ListNode* slow = &dummy;
         for(int i = 0; i < n; i++){
             fast = fast->next;
         }
@@ -59,7 +59,7 @@ public:
         slow->next = remove->next;
         delete remove;
         remove = nullptr;
-        return dummy->next;
+        return dummy.next;
     }
 };
 
